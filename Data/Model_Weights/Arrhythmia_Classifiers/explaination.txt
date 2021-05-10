@@ -1,1 +1,3 @@
-This folder contains pre-trained models for arrhythmia classification
+This folder contains pre-trained models for arrhythmia classification. 
+* The TCN trained over 200 epochs with transferred weights is saved as arrhythmia_TCN_classifier_batch_32_frozen.zip.
+* The TCN trained over 200 epochs without transfer learning is saved as arrhythmia_TCN_classifier_batch_32_not_transferred.zip
