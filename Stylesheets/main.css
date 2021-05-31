@@ -1,0 +1,67 @@
+:root {
+  --purple: #350085;
+  --darkpurple: #9752ff;
+}
+
+/** Custom fonts **/
+@font-face {
+  font-family: pineapple;
+  src: url('../Assets/Fonts/pineapple/PineappleDemo.ttf');
+}
+
+@font-face {
+  font-family: TwCen;
+  src: url('../Assets/Fonts/TCCEB/TCCEB.ttf');
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth !important;
+}
+
+body {
+  margin: auto;
+}
+
+h1 {
+  font-size: 25px;
+  font-family: TwCen;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.content {
+  padding-left:25px;
+  padding-right:25px;
+  margin-top: 100px;
+}
+
+/** Reposition anchor tags above linked content **/
+a.anchor {
+  display: block;
+  position: relative;
+  top: -80px;
+  visibility: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 5px grey;
+  background-image: linear-gradient(to top, var(--purple), var(--darkpurple));
+}
+
+@media screen and (max-width: 720px) {
+  .content {
+    margin-top: 240px;
+  }
+}
