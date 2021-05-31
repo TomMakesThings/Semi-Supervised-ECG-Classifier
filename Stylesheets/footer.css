@@ -1,6 +1,6 @@
 .footer {
   text-align: center;
-  font-family: lato-bold;
+  font-family: TwCen;
   overflow: hidden;
   background-image: linear-gradient(to right, var(--darkpurple),  var(--purple));
   -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.5));
