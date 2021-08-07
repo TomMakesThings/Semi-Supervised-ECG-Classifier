@@ -57,6 +57,10 @@ span {
   color: var(--brightpurple);
 }
 
+figcaption {
+  font-size: 12px;
+}
+
 /** Reposition anchor tags above linked content **/
 a.anchor {
   display: block;

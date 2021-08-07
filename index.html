@@ -14,6 +14,7 @@
 
 	<!-- Links to the CSS stylesheets -->
 	<link rel="stylesheet" href="Stylesheets\main.css">
+	<link rel="stylesheet" href="Stylesheets\images.css">
 	<link rel="stylesheet" href="Stylesheets\navbar.css">
 	<link rel="stylesheet" href="Stylesheets\index.css">
 	<link rel="stylesheet" href="Stylesheets\footer.css">
@@ -67,6 +68,11 @@
 			However, this is often time consuming, prone to error and requires specialist training [3].
 			Therefore, the development of reliable classification models is of great benefit to medical staff and the well being of patients by improving the accuracy speed of diagnosis.
 		</p>
+
+		<figure>
+			<p><img class="ecg-diagram diagram" src="Assets/Images/ECG-Diagram.png"></p>
+			<figcaption>Figure 1: ECG of a normal heartbeat [6]</figcaption>
+		</figure>
 
 		<h2>Objectives</h2>
 		<ol>
@@ -162,7 +168,10 @@
 			All layers except the final layer are frozen and the new model trained to classify the original labels.
 		</p>
 
-		<p><img src="Assets/Images/TCN-Diagram.png" style="height: 500px;"></p>
+		<figure>
+			<p><img class="tcn-diagram diagram" src="Assets/Images/TCN-Diagram.png"></p>
+			<figcaption>Figure 2: The proposed network architecture</figcaption>
+		</figure>
 
 		<h3>Proposed Network Architecture</h3>
 		<p>The CNN is to be initially constructed with a 1D convolutional layer, max pooling, flatten layer and two fully connected layers.
@@ -184,6 +193,12 @@
 		<p>The label distribution of the dataset is largely unbalanced, with 83% of samples belonging to the non-ectopic class.
 			Without either up-sampling or down-sampling, this can cause the model to converge to always predict the same class resulting in a misleadingly high accuracy as proven in Figure 3.
 		</p>
+
+		<figure>
+			<p><img class="raw-label-pie diagram" src="Assets/Images/Raw-Label-Distribution-Pie.png"></p>
+			<p><img class="raw-label-matrix diagram" src="Assets/Images/Raw-Label-Confusion-Matrix.png"></p>
+			<figcaption>Figure 3: Left is the label distribution of all the data; right is a confusion matrix in which the same class if always being predicted produced when training an LSTM on all original labels.</figcaption>
+		</figure>
 
 		<h3>Transfer Learning</h3>
 		<p>A significant part of the project involved comparing multiple architectures and configuring parameters to achieve the best classification performance.
@@ -220,6 +235,12 @@
 			Some of these new samples are randomly rounded to a lower number of decimal places to replicate a reduction in signal quality.
 		</p>
 
+		<figure>
+			<p><img class="original-ecg diagram" src="Assets/Images/Original-ECG.png"></p>
+			<p><img class="gaussian-ecg diagram" src="Assets/Images/Gaussian-ECG.png"></p>
+			<figcaption>Figure 4: Example of a real ECG and a Gaussian noise augmented sample</figcaption>
+		</figure>
+
 		<h2>Clustering</h2>
 		<p>Before training the first classification model, new labels were assigned to each sample through clustering.
 			To improve the quality of the cluster assignments, we tested different parameters for the clustering algorithms.
@@ -246,11 +267,16 @@
 			Trying to optimize the number of samples being clustered also produced low silhouette scores.
 		</p>
 
-		<h3>Conclustion</h3>
+		<h3>Conclusion</h3>
 		<p>We concluded that k-means with 15 principal components was to be chosen to assign the new labels as it is a good compromise between silhouette coefficient and standard deviation.
 			Figure 5 demonstrates that most clusters are well defined with an identifiable shapes, while PCA and t-SNE graphs show cluster size and how similar clusters are to one another.
 			These additional figures and tables of results are in the Appendix.
 		</p>
+
+		<figure>
+			<p><img class="clustered-ecgs diagram" src="Assets/Images/Clustered-ECGs.png"></p>
+			<figcaption>Figure 5: Plots of ECGs assigned to each cluster, with the coloured line representing the average time-series</figcaption>
+		</figure>
 
 		<h2>Cluster Classification</h2>
 		<h3>Train and Test Splits</h3>
@@ -261,6 +287,12 @@
 			At first the models were training using 20% of the training data for validation.
 			Then k-fold cross validation was run on the training data to find the best train-validation split.
 		</p>
+
+		<figure>
+			<p><img class="cluster-labels diagram" src="Assets/Images/Cluster-Label-Distribution.png"></p>
+			<p><img class="arrhythmia-labels diagram" src="Assets/Images/Arrhythmia-Label-Distribution.png"></p>
+			<figcaption>Figure 7: Size distribution of arrhythmia class labels for training and testing splits</figcaption>
+		</figure>
 
 		<h3>CNN and Bidirectional LSTM</h3>
 		<p>First variations of CNN and LSTM models, both with and without TCN and self-attention, were run over 50 epochs using the Adam optimizer, batch size 128 and no dropout.

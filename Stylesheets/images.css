@@ -1,0 +1,40 @@
+.diagram
+ {
+  width: 100%;
+}
+
+.ecg-diagram {
+  max-width: 280px;
+}
+
+.tcn-diagram {
+  max-width: 400px;
+}
+
+.raw-label-pie {
+  max-width: 220px;
+}
+
+.raw-label-matrix {
+  max-width: 220px;
+}
+
+.original-ecg {
+  max-width: 350px;
+}
+
+.gaussian-ecg {
+  max-width: 350px;
+}
+
+.clustered-ecgs {
+  max-width: 950px;
+}
+
+.cluster-labels {
+  max-width: 550px;
+}
+
+.arrhythmia-labels {
+  max-width: 700px;
+}
