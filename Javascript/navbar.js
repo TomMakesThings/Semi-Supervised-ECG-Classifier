@@ -1,9 +1,9 @@
 function profileHover(element) {
-  element.setAttribute('src', "Assets/Images/TomMakesThings-Blink.gif");
+  element.setAttribute('src', "Assets/Images/Profile-Blink.gif");
 }
 
 function profileUnhover(element) {
-  element.setAttribute('src', "Assets/Images/TomMakesThings.png");
+  element.setAttribute('src', "Assets/Images/Profile.png");
 }
 
 window.onscroll = function() {scrollFunction()};
