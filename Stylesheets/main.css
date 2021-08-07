@@ -13,7 +13,7 @@
 }
 
 @font-face {
-  font-family: TwCen;
+  font-family: TCCEB;
   src: url('../Assets/Fonts/TCCEB/TCCEB.ttf');
 }
 
@@ -29,13 +29,13 @@ body {
 
 h1 {
   font-size: 25px;
-  font-family: TwCen;
+  font-family: TCCEB;
   background-color: var(--midgrey)
 }
 
 h2 {
   font-size: 20px;
-  font-family: TwCen;
+  font-family: TCCEB;
 }
 
 h3 {
