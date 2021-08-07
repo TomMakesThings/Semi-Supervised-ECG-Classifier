@@ -10,8 +10,22 @@
   margin-right: 13px;
 }
 
+.profilepic:hover {
+  animation: IncreaseSize 1.5s linear infinite;
+}
+
+@keyframes IncreaseSize {
+  0%, 100% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
 #username {
   font-size: 25px;
+  font-family: pineapple;
 }
 
 .header {

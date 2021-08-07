@@ -1,6 +1,9 @@
 :root {
   --purple: #350085;
-  --darkpurple: #9752ff;
+  --darkpurple: #3500A0;
+  --brightpurple: #6600FF;
+  --midgrey: #BFBFBF;
+  --lightgrey: #F2F2F2;
 }
 
 /** Custom fonts **/
@@ -27,16 +30,31 @@ body {
 h1 {
   font-size: 25px;
   font-family: TwCen;
+  background-color: var(--midgrey)
 }
 
 h2 {
   font-size: 20px;
+  font-family: TwCen;
+}
+
+h3 {
+  font-size: 16px;
+  font-family: Segoe UI Historic;
+  text-decoration: underline;
+  color: var(--brightpurple);
 }
 
 .content {
-  padding-left:25px;
-  padding-right:25px;
-  margin-top: 100px;
+  padding-left: 200px;
+  padding-right: 200px;
+  margin-top: 120px;
+  overflow: visible;
+}
+
+span {
+  font-weight: bold;
+  color: var(--brightpurple);
 }
 
 /** Reposition anchor tags above linked content **/
