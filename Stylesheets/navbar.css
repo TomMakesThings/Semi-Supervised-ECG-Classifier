@@ -32,13 +32,8 @@
   }
 }
 
-#username {
-  font-size: 22px;
-  font-family: pineapple;
-}
-
 #sitename {
-  font-size: 20px;
+  font-size: max(20px, min(30px, 3.5vw));
 }
 
 .header {
@@ -47,14 +42,14 @@
   position: fixed;
   top: 0px;
   width: 100%;
+  min-width: 450px;
   z-index: 100;
-  background-image: linear-gradient(to top, var(--darkpurple),  var(--purple));
+  background-image: linear-gradient(to bottom, var(--darkpurple),  var(--purple));
   -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.5));
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.2));
 }
 
 .header a {
-  float: left;
   color: white;
   padding: 10px;
   text-decoration: none;
@@ -62,41 +57,79 @@
   white-space: nowrap;
 }
 
-#header-left a {
-  font-size: 22px;
+#header-top, #header-center, .header-lower {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
-.header-right a {
-  font-size: min(2vw, 18px);
+#header-top {
+  background: rgba(0, 0, 0, 0.5)
 }
 
-#header-left {
+#header-center {
+  width: 100%;
+}
+
+#header-tom, #header-others {
   float: left;
-  font-family: pineapple;
+  display: flex;
 }
 
-.header-right, #header-github {
+#name-text {
+  position: relative;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ecg {
+  padding-top: 15px;
+  max-width: 250px;
+  width: 20%;
+  position: absolute;
+}
+
+.ecg-left {
+  float: left;
+  left: 0%;
+}
+
+.ecg-right {
   float: right;
+  right: 0%;
 }
 
-#header-left:hover, .navtext:hover {
+#header-top a {
+  float: none;
+  font-size: max(15px, min(3vw, 20px));
+  font-family: lovestory;
+  vertical-align: middle;
+}
+
+.header-lower a {
+  font-size: max(14px, min(2vw, 18px));
+}
+
+.navtext:hover {
   animation: IncreaseSizeSmall 1.1s linear infinite;
 }
 
+.navtext:hover:not(#username) {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 720px) {
-  #header-left, #header-center, .header-right {
+  .header a {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .header-lower {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-
-  #header-left a, #header-center a {
-    font-size: 26px;
-    font-size: min(5vw, 30px);
-  }
-
-  .header-right a {
-    font-size: 3vw;
+    display: inline-block;
   }
 }

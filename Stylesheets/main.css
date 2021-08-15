@@ -1,5 +1,5 @@
 :root {
-  --purple: #350085;
+  --purple: #6100FE;
   --darkpurple: #3500A0;
   --brightpurple: #6600FF;
   --midgrey: #BFBFBF;
@@ -8,8 +8,8 @@
 
 /** Custom fonts **/
 @font-face {
-  font-family: pineapple;
-  src: url('../Assets/Fonts/pineapple/PineappleDemo.ttf');
+  font-family: lovestory;
+  src: url('../Assets/Fonts/love_story_2/lovestory.ttf');
 }
 
 @font-face {
@@ -48,7 +48,7 @@ h3 {
 .content {
   padding-left: 200px;
   padding-right: 200px;
-  margin-top: 120px;
+  margin-top: 230px;
   overflow: visible;
 }
 
@@ -86,5 +86,33 @@ a.anchor {
 @media screen and (max-width: 720px) {
   .content {
     margin-top: 240px;
+  }
+}
+
+@media screen and (max-width: 1400px) and (min-width: 1300px) {
+  .content {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1200px) {
+  .content {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 840px) {
+  .content {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .content {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
