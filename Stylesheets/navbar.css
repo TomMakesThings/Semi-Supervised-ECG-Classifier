@@ -23,9 +23,22 @@
   }
 }
 
+@keyframes IncreaseSizeSmall {
+  0%, 100% {
+    transform: scale(1.01);
+  }
+  25% {
+    transform: scale(1.04);
+  }
+}
+
 #username {
-  font-size: 25px;
+  font-size: 22px;
   font-family: pineapple;
+}
+
+#sitename {
+  font-size: 20px;
 }
 
 .header {
@@ -57,16 +70,6 @@
   font-size: min(2vw, 18px);
 }
 
-@keyframes rotation {
-  50% {
-    transform: rotate(0.5deg);
-  }
-
-  100% {
-    transform: rotate(0.5deg);
-  }
-}
-
 #header-left {
   float: left;
   font-family: pineapple;
@@ -77,15 +80,7 @@
 }
 
 #header-left:hover, .navtext:hover {
-  transition: 0.3s;
-  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
-  -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.5));
-  filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.2));
-  animation-duration: 1.5s;
-  animation-name: rotation;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-out;
+  animation: IncreaseSizeSmall 1.1s linear infinite;
 }
 
 @media screen and (max-width: 720px) {
