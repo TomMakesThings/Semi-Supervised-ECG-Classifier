@@ -14,7 +14,7 @@
 
 	<!-- Links to the CSS stylesheets -->
 	<link rel="stylesheet" href="Stylesheets\main.css">
-	<link rel="stylesheet" href="Stylesheets\images.css">
+	<link rel="stylesheet" href="Stylesheets\figures.css">
 	<link rel="stylesheet" href="Stylesheets\navbar.css">
 	<link rel="stylesheet" href="Stylesheets\index.css">
 	<link rel="stylesheet" href="Stylesheets\footer.css">
@@ -28,7 +28,7 @@
 					<a href="https://tommakesthings.github.io/" target="_blank" style="padding: 0px 10px 0px 10px;"><img src="Assets/Images/Profile.png" alt="GitHub profile picture" class="profilepic" id="tomprofile" onmouseover="profileHover(this);" onmouseout="profileUnhover(this);"></a>
 				</div>
 				<div id="name-text">
-					<a href="https://tommakesthings.github.io/" target="_blank" id="username" class="navtext">TomMakesThings +</a>
+					<a href="https://tommakesthings.github.io/" target="_blank" id="username" class="navtext">TomMakesThings &</a>
 					<!-- <a href="https://tommakesthings.github.io/" target="_blank"><p id="hint">(click to see more of my work)</p></a> -->
 				</div>
 			</div>
@@ -44,17 +44,17 @@
 			<a href="https://github.com/TomMakesThings/Semi-Supervised-ECG-Classifier" target="_blank" id="sitename" class="navtext">Semi-Supervised Learning with TCNs for ECG Classification</a>
 		</div>
 		<div class="header-lower" id="visible-header">
-			<a href="#about" class="navtext">Introduction</a>
-			<a href="#about" class="navtext">Literature Review</a>
-			<a href="#about" class="navtext">Problem Analysis</a>
-			<a href="#about" class="navtext">Implementation and Evaluation</a>
-			<a href="#about" class="navtext">Discussions and Findings</a>
+			<a href="#introduction" class="navtext">Introduction</a>
+			<a href="#literature" class="navtext">Literature Review</a>
+			<a href="#problem" class="navtext">Problem Analysis</a>
+			<a href="#implementation" class="navtext">Implementation and Evaluation</a>
+			<a href="#discussions" class="navtext">Discussions and Findings</a>
 		</div>
 	</div>
 
 <div class="content">
 	<div>
-		<a name="about" class="anchor"></a>
+		<a name="introduction" class="anchor"></a>
   	<h1>Introduction</h1>
 		<p>The aim of this project is to create a classifier that can detect if a patient has one of several types of heart condition known as arrhythmia given a time series of an electrocardiogram (ECG) heartbeat. In particular, the focus is to use self-supervised and transfer learning to see if we can improve accuracy for two different network architectures.
 		</p>
@@ -66,9 +66,9 @@
 			The most prominent waves of a healthy ECG are:
 		</p>
 		<ul>
-			<li>P wave: electrical activation (depolarization) of the atria by the sino-atrial node causing contraction of the upper chambers of the heart referred to as atrial systole.</li>
-			<li>QRS complex: electrical stimulation of the ventricles leading to contraction of the lower chambers of the   heart, i.e., ventricular systole.</li>
-			<li>T wave: repolarization of the ventricles allowing the muscles of the heart’s chambers to relax.</li>
+			<li><span>P wave</span>: electrical activation (depolarization) of the atria by the sino-atrial node causing contraction of the upper chambers of the heart referred to as atrial systole.</li>
+			<li><span>QRS complex</span>: electrical stimulation of the ventricles leading to contraction of the lower chambers of the   heart, i.e., ventricular systole.</li>
+			<li><span>T wave</span>: repolarization of the ventricles allowing the muscles of the heart’s chambers to relax.</li>
 		</ul>
 		<p>Traditionally, arrhythmia was diagnosed by a person who analyses an ECG for identifiable traits such as irregularly shaped waves.
 			However, this is often time consuming, prone to error and requires specialist training [3].
@@ -79,6 +79,8 @@
 			<p><img class="ecg-diagram diagram" src="Assets/Images/ECG-Diagram.png"></p>
 			<figcaption>Figure 1: ECG of a normal heartbeat [6]</figcaption>
 		</figure>
+
+		<br>
 
 		<h2>Objectives</h2>
 		<ol>
@@ -97,6 +99,10 @@
 
 		<br>
 
+	</div>
+
+	<div>
+		<a name="literature" class="anchor"></a>
 		<h1>Literature Review</h2>
 		<h2>Network Architectures</h2>
 		<h3>Convolution Neural Networks (CNN)</h3>
@@ -128,6 +134,8 @@
 			Though frequently associated with NLP and transformers, several studies have shown promising results using self-attention for time-series [18].
 		</p>
 
+		<br>
+
 		<h2>Semi-Supervised Learning</h2>
 		<p>In a study by Sarkar et al., a semi-supervised approach is adapted for ECG emotion recognition [19].
 			This involved generating labels from augmented samples to train a CNN.
@@ -136,6 +144,8 @@
 			Other benefits of this approach include learning generalized features which can be used for a wide range of tasks, not just emotion recognition.
 			Larger datasets may also be used as self-supervised learning doesn’t need annotated labels which are costly to produce.
 		</p>
+
+		<br>
 
 		<h2>Unsupervised Learning Algorithms</h2>
 		<p>Unsupervised learning is a machine learning approach in which a model must determine patterns to classify unlabeled data.
@@ -166,6 +176,10 @@
 
 		<br>
 
+	</div>
+
+	<div>
+		<a name="problem" class="anchor"></a>
 		<h1>Problem Analysis</h1>
 		<h2>Proposed Approach</h2>
 		<p>For this project, we proposed to use unsupervised learning through clustering to assign new labels to all samples in a dataset of ECGs.
@@ -187,6 +201,8 @@
 			This includes either adding a TCN layer at the beginning, or a self-attention after the CNN or LSTM block.
 		</p>
 
+		<br>
+
 		<h2>Challenges</h2>
 		<h3>Measuring Clustering Performance</h3>
 		<p>In the absence of a ground truth, it is difficult to measure how well each algorithm has performed.
@@ -201,9 +217,11 @@
 		</p>
 
 		<figure>
-			<p><img class="raw-label-pie diagram" src="Assets/Images/Raw-Label-Distribution-Pie.png"></p>
-			<p><img class="raw-label-matrix diagram" src="Assets/Images/Raw-Label-Confusion-Matrix.png"></p>
-			<figcaption>Figure 3: Left is the label distribution of all the data; right is a confusion matrix in which the same class if always being predicted produced when training an LSTM on all original labels.</figcaption>
+			<div class="aligned-images">
+				<p><img class="raw-label-pie diagram" src="Assets/Images/Raw-Label-Distribution-Pie.png"></p>
+				<p><img class="raw-label-matrix diagram" src="Assets/Images/Raw-Label-Confusion-Matrix.png"></p>
+			</div>
+			<figcaption>Figure 3: Left is the label distribution of all the data; right is a confusion matrix in which the same class if always being predicted produced when training an LSTM on all original labels</figcaption>
 		</figure>
 
 		<h3>Transfer Learning</h3>
@@ -212,9 +230,11 @@
 			While it was necessary to augment the data due to the significant imbalance, the model’s ability to detect patterns for certain arrhythmia conditions may have been reduced due to augmented samples not reflecting real world data.
 		</p>
 
+		<br>
+
 		<h2>Technical Issues</h2>
 		<h3>Colab</h3>
-		<p>Implementation was done through two shared notebooks on Google Colab.
+		<p>Implementation was done through <a href="https://github.com/TomMakesThings/Semi-Supervised-ECG-Classifier">two shared notebooks</a> on Google Colab.
 			However, there were several technical factors, which, when combined with time constraints, affected the outcome of the investigation.
 			For example, long training times when adding LSTM layers, along with the large range of optimisable parameters, meant that we did not explore the LSTM architecture in as much depth as CNN and that compromises needed to be made to select reasonable parameters in the time available.
 			In addition, runtime constraints sometimes caused the notebooks to disconnect upon training for a long time over many epochs.
@@ -227,13 +247,68 @@
 
 		<br>
 
+	</div>
+
+	<div>
+		<a name="implementation" class="anchor"></a>
 		<h1>Implementation and Evaluation</h1>
 		<h2>Dataset</h2>
-		<p>For the project we used the MIT-BIH Arrhythmia Dataset [4].
+		<p>For the project we used the <a href="https://www.kaggle.com/shayanfazeli/heartbeat">MIT-BIH Arrhythmia Dataset</a> [4].
 			This is a popular, publicly available dataset produced in 1980 for the purpose of detecting types of arrhythmia.
 			It was selected as it contains 109446 labelled samples which is sufficient to train a supervised deep neural network.
 			Although each sample is assigned one of five classes, these are originally derived from 16 types of arrhythmia as outlined in Table 1.
 		</p>
+
+		<figure style="margin: 0px;">
+			<table>
+				<thead>
+	  			<tr>
+	    			<th>Label</th>
+	    			<th>Class Name</th>
+	    			<th>Explaination</th>
+						<th>Samples</th>
+	  			</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0/N</td>
+						<td>Non-ectotic beats</td>
+						<td>ECGs that have been determined to have a normal heartbeat.
+							The patient does not have arrhythmia.</td>
+						<td>90589</td>
+					</tr>
+					<tr>
+						<td>1/S</td>
+						<td>Supraventricular ectopic beats</td>
+						<td>ECGs show traits of either atrial premature beats, aberrated premature beats, nodal junction premature beats,
+							or supraventricular premature beats [5].</td>
+						<td>2779</td>
+					</tr>
+					<tr>
+						<td>2/V</td>
+						<td>Ventricular ectopic beats</td>
+						<td>ECGs were determined as either premature ventricular contraction or ventricular escape beats [5].</td>
+						<td>7236</td>
+					</tr>
+					<tr>
+						<td>3/F</td>
+						<td>Fusion beats</td>
+						<td>ECGs have fusion of ventricular or fusion of normal beats [5].</td>
+						<td>803</td>
+					</tr>
+					<tr>
+						<td>4/Q</td>
+						<td>Unknown beats</td>
+						<td>ECGs contains a paced beat, fusion of paced and normal beats or an unclassified beat [5].</td>
+						<td>8039</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<figcaption>Table 1: MIT-BIH dataset classes</figcaption>
+		</figure>
+
+		<br>
 
 		<h2>Data Augmentation</h2>
 		<p>Before clustering, more samples of the least frequent class are created.
@@ -242,10 +317,14 @@
 		</p>
 
 		<figure>
-			<p><img class="original-ecg diagram" src="Assets/Images/Original-ECG.png"></p>
-			<p><img class="gaussian-ecg diagram" src="Assets/Images/Gaussian-ECG.png"></p>
-			<figcaption>Figure 4: Example of a real ECG and a Gaussian noise augmented sample</figcaption>
+			<div class="aligned-images">
+				<p><img class="original-ecg diagram" src="Assets/Images/Original-ECG.png"></p>
+				<p><img class="gaussian-ecg diagram" src="Assets/Images/Gaussian-ECG.png"></p>
+			</div>
+			<figcaption>Figure 4: Example of a real ECG (left) and a Gaussian noise augmented sample (right)</figcaption>
 		</figure>
+
+		<br>
 
 		<h2>Clustering</h2>
 		<p>Before training the first classification model, new labels were assigned to each sample through clustering.
@@ -321,6 +400,8 @@
 			The final test accuracies were 13.35% and 9.45% retrospectively as reflected by the confusion matrices presented in Figure 9.
 		</p>
 
+		<br>
+
 		<h2>Arrhythmia Classification</h2>
 		<h3>Transfer Learning</h3>
 		<p>After training the CNN and CNN + TCN to classify the clusters, the weights were saved to file and uploaded to GitHub.
@@ -350,6 +431,10 @@
 
 		<br>
 
+	</div>
+
+	<div>
+		<a name="discussions" class="anchor"></a>
 		<h1>Discussions and Findings</h1>
 		<h2>Project Summary</h2>
 		<p>The objective was to create a classifier to detect heart conditions from ECG time-series data.
@@ -376,9 +461,13 @@
 			While the results from both approaches were similar, this demonstrates the potential of our approach, which will stand to benefit in the context of medical imaging, where most data is unlabeled.
 		</p>
 
+		<br>
+
 		<h2>Code, Data and Models</h2>
 		<p>The Python notebooks, dataset of ECGs with cluster assignments and trained model weights made in this project are hosted on GitHub.
 		</p>
+
+		<br>
 
 		<h2>Future Suggestions</h2>
 		<p>To fully flesh out the prospective of our proposed semi-supervised solution, there are several avenues to explore in future work.

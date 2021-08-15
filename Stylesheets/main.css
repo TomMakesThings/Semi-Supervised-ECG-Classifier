@@ -4,6 +4,8 @@
   --brightpurple: #6600FF;
   --midgrey: #BFBFBF;
   --lightgrey: #F2F2F2;
+  --limegreen: #7ffc03;
+  --green: #6ad40d;
 }
 
 /** Custom fonts **/
@@ -50,6 +52,11 @@ h3 {
   padding-right: 200px;
   margin-top: 230px;
   overflow: visible;
+  min-width: 450px;
+}
+
+h1, h2, h3, p {
+  padding: 3px;
 }
 
 span {
@@ -57,8 +64,37 @@ span {
   color: var(--brightpurple);
 }
 
+figure {
+  text-align: center;
+  margin: 0px -3px 0px -3px;
+}
+
 figcaption {
   font-size: 12px;
+}
+
+table, th, td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
+a {
+  color: grey;
+}
+
+a:hover {
+  color: var(--green);
 }
 
 /** Reposition anchor tags above linked content **/
@@ -81,6 +117,16 @@ a.anchor {
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 5px grey;
   background-image: linear-gradient(to top, var(--purple), var(--darkpurple));
+}
+
+/* WebKit and Blink browsers text selection */
+::selection {
+  background: var(--limegreen);
+}
+
+/* Gecko Browsers text selection */
+::-moz-selection {
+  background: var(--limegreen);
 }
 
 @media screen and (max-width: 720px) {

@@ -4,7 +4,7 @@
 }
 
 .ecg-diagram {
-  max-width: 280px;
+  max-width: 270px;
 }
 
 .tcn-diagram {
@@ -12,11 +12,11 @@
 }
 
 .raw-label-pie {
-  max-width: 220px;
+  max-width: 230px;
 }
 
 .raw-label-matrix {
-  max-width: 220px;
+  max-width: 230px;
 }
 
 .original-ecg {
@@ -37,4 +37,11 @@
 
 .arrhythmia-labels {
   max-width: 700px;
+}
+
+.aligned-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
 }
