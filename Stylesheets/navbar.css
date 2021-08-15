@@ -47,6 +47,8 @@
   background-image: linear-gradient(to bottom, var(--darkpurple),  var(--purple));
   -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.5));
   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.2));
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
 }
 
 .header a {
@@ -87,8 +89,11 @@
 .ecg {
   padding-top: 15px;
   max-width: 250px;
+  min-width: 210px;
   width: 20%;
   position: absolute;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
 }
 
 .ecg-left {
@@ -124,6 +129,12 @@
   .header a {
     padding-left: 6px;
     padding-right: 6px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .ecg {
+    opacity: 0;
   }
 }
 
