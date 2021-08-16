@@ -61,7 +61,7 @@
 
 		<h2>Background</h2>
 		<p>Arrhythmia is a type of heart condition concerning the rate or rhyme of the heart [1].
-			The most common method of detection is through analysis of electrocardiograms.
+			The most common method of detection is through analysis of electrocardiograms (<a href="#figure1">Figure 1</a>).
 			This is a test that records the electrical signals of each heartbeat [2] to produce a graph of waves and intervals such as that depicted in Figure 1.
 			The most prominent waves of a healthy ECG are:
 		</p>
@@ -75,9 +75,10 @@
 			Therefore, the development of reliable classification models is of great benefit to medical staff and the well being of patients by improving the accuracy speed of diagnosis.
 		</p>
 
+		<a name="figure1"></a>
 		<figure>
 			<p><img class="ecg-diagram diagram" src="Assets/Images/ECG-Diagram.png"></p>
-			<figcaption>Figure 1: ECG of a normal heartbeat [6]</figcaption>
+			<figcaption><span>Figure 1:</span> ECG of a normal heartbeat [6]</figcaption>
 		</figure>
 
 		<br>
@@ -184,13 +185,14 @@
 		<h2>Proposed Approach</h2>
 		<p>For this project, we proposed to use unsupervised learning through clustering to assign new labels to all samples in a dataset of ECGs.
 			CNN and bidirectional LSTM models will be trained to classify samples based upon these new labels.
-			The best models will be saved, and the weights transferred to a new classifier with the same architecture as shown in Figure 2.
+			The best models will be saved, and the weights transferred to a new classifier with the same architecture as shown in <a href="#figure2">Figure 2</a>.
 			All layers except the final layer are frozen and the new model trained to classify the original labels.
 		</p>
 
+		<a name="figure2"></a>
 		<figure>
 			<p><img class="tcn-diagram diagram" src="Assets/Images/TCN-Diagram.png"></p>
-			<figcaption>Figure 2: The proposed network architecture</figcaption>
+			<figcaption><span>Figure 2:</span> The proposed network architecture</figcaption>
 		</figure>
 
 		<h3>Proposed Network Architecture</h3>
@@ -213,15 +215,16 @@
 
 		<h3>Class Imbalance</h3>
 		<p>The label distribution of the dataset is largely unbalanced, with 83% of samples belonging to the non-ectopic class.
-			Without either up-sampling or down-sampling, this can cause the model to converge to always predict the same class resulting in a misleadingly high accuracy as proven in Figure 3.
+			Without either up-sampling or down-sampling, this can cause the model to converge to always predict the same class resulting in a misleadingly high accuracy as proven in <a href="#figure3">Figure 3</a>.
 		</p>
 
+		<a name="figure3"></a>
 		<figure>
 			<div class="aligned-images">
 				<p><img class="raw-label-pie diagram" src="Assets/Images/Raw-Label-Distribution-Pie.png"></p>
-				<p><img class="raw-label-matrix diagram" src="Assets/Images/Raw-Label-Confusion-Matrix.png"></p>
+				<p><img class="confusion-matrix diagram" src="Assets/Images/Raw-Label-Confusion-Matrix.png"></p>
 			</div>
-			<figcaption>Figure 3: Left is the label distribution of all the data; right is a confusion matrix in which the same class if always being predicted produced when training an LSTM on all original labels</figcaption>
+			<figcaption><span>Figure 3:</span> Left is the label distribution of all the data; right is a confusion matrix in which the same class if always being predicted produced when training an LSTM on all original labels</figcaption>
 		</figure>
 
 		<h3>Transfer Learning</h3>
@@ -256,9 +259,10 @@
 		<p>For the project we used the <a href="https://www.kaggle.com/shayanfazeli/heartbeat">MIT-BIH Arrhythmia Dataset</a> [4].
 			This is a popular, publicly available dataset produced in 1980 for the purpose of detecting types of arrhythmia.
 			It was selected as it contains 109446 labelled samples which is sufficient to train a supervised deep neural network.
-			Although each sample is assigned one of five classes, these are originally derived from 16 types of arrhythmia as outlined in Table 1.
+			Although each sample is assigned one of five classes, these are originally derived from 16 types of arrhythmia as outlined in <a href="#table1">Table 1</a>.
 		</p>
 
+		<a name="table1"></a>
 		<figure style="margin: 0px;">
 			<table>
 				<thead>
@@ -304,24 +308,24 @@
 					</tr>
 				</tbody>
 			</table>
-			<br>
-			<figcaption>Table 1: MIT-BIH dataset classes</figcaption>
+			<figcaption><span>Table 1:</span> MIT-BIH dataset classes</figcaption>
 		</figure>
 
 		<br>
 
 		<h2>Data Augmentation</h2>
 		<p>Before clustering, more samples of the least frequent class are created.
-			This was achieved by adding Gaussian noise to the non-padded part of the time-series, then normalizing to ensure amplitude is between 0 - 1 like the other samples (see Figure 4).
+			This was achieved by adding Gaussian noise to the non-padded part of the time-series, then normalizing to ensure amplitude is between 0 - 1 like the other samples (see <a href="#figure4">Figure 4</a>).
 			Some of these new samples are randomly rounded to a lower number of decimal places to replicate a reduction in signal quality.
 		</p>
 
+		<a name="figure4"></a>
 		<figure>
 			<div class="aligned-images">
 				<p><img class="original-ecg diagram" src="Assets/Images/Original-ECG.png"></p>
 				<p><img class="gaussian-ecg diagram" src="Assets/Images/Gaussian-ECG.png"></p>
 			</div>
-			<figcaption>Figure 4: Example of a real ECG (left) and a Gaussian noise augmented sample (right)</figcaption>
+			<figcaption><span>Figure 4:</span> Example of a real ECG (left) and a Gaussian noise augmented sample (right)</figcaption>
 		</figure>
 
 		<br>
@@ -354,29 +358,38 @@
 
 		<h3>Conclusion</h3>
 		<p>We concluded that k-means with 15 principal components was to be chosen to assign the new labels as it is a good compromise between silhouette coefficient and standard deviation.
-			Figure 5 demonstrates that most clusters are well defined with an identifiable shapes, while PCA and t-SNE graphs show cluster size and how similar clusters are to one another.
+			<a href="#figure5">Figure 5</a> demonstrates that most clusters are well defined with an identifiable shapes, while PCA and t-SNE graphs show cluster size and how similar clusters are to one another.
 			These additional figures and tables of results are in the Appendix.
 		</p>
 
+		<a name="figure5"></a>
 		<figure>
 			<p><img class="clustered-ecgs diagram" src="Assets/Images/Clustered-ECGs.png"></p>
-			<figcaption>Figure 5: Plots of ECGs assigned to each cluster, with the coloured line representing the average time-series</figcaption>
+			<figcaption><span>Figure 5</span>: Plots of ECGs assigned to each cluster, with the coloured line representing the average time-series</figcaption>
 		</figure>
+
+		<br>
 
 		<h2>Cluster Classification</h2>
 		<h3>Train and Test Splits</h3>
 		<p>After assigning a cluster to each sample, the maximum number of samples in each class is capped at 1000 and excess samples are removed.
 			Again, noise augmented samples are created to provide more examples of the rarest clusters.
 			Then data is split into by reserving 2000 of the non-augmented samples for testing and using the rest for training.
-			This resulted in a fairly even label distribution among both assigned clusters and true labels as presented in Figure 6 and Figure 7.
+			This resulted in a fairly even label distribution among both assigned clusters and true labels as presented in <a href="#figure6">Figure 6</a> and <a href="#figure7">Figure 7</a>.
 			At first the models were training using 20% of the training data for validation.
 			Then k-fold cross validation was run on the training data to find the best train-validation split.
 		</p>
 
+		<a name="figure6"></a>
 		<figure>
 			<p><img class="cluster-labels diagram" src="Assets/Images/Cluster-Label-Distribution.png"></p>
+			<figcaption><span>Figure 6:</span> Size distribution of cluster labels for training and testing splits</figcaption>
+		</figure>
+
+		<a name="figure7"></a>
+		<figure>
 			<p><img class="arrhythmia-labels diagram" src="Assets/Images/Arrhythmia-Label-Distribution.png"></p>
-			<figcaption>Figure 7: Size distribution of arrhythmia class labels for training and testing splits</figcaption>
+			<figcaption><span>Figure 7:</span> Size distribution of arrhythmia class labels for training and testing splits</figcaption>
 		</figure>
 
 		<h3>CNN and Bidirectional LSTM</h3>
@@ -388,23 +401,156 @@
 		</p>
 
 		<h3>Preventing Overfitting</h3>
-		<p>When the two best models were run over 250 epochs, they achieved 97.25% and 98.15% train accuracy retrospectively (refer to Table 2).
+		<p>When the two best models were run over 250 epochs, they achieved 97.25% and 98.15% train accuracy retrospectively (refer to <a href="#table2">Table 2</a>).
 			However, both validation and training accuracy were far lower suggesting the models were overfitting.
 			Therefore, we tested varying rates of dropout and found that for both models this increased testing accuracy, with the best results highlighted yellow.
 		</p>
 
+		<a name="table2"></a>
+		<figure style="margin: 0px;">
+			<table>
+				<thead>
+	  			<tr>
+	    			<th>Architecture</th>
+	    			<th>Dropout</th>
+	    			<th>Train Loss</th>
+						<th>Validation Loss</th>
+						<th>Train Accuracy</th>
+						<th>Validation Accuracy</th>
+						<th>Test Accuracy</th>
+	  			</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>CNN</td>
+						<td>0</td>
+						<td>0.0891</td>
+						<td>10.7169</td>
+						<td>97.35%</td>
+						<td>24.37%</td>
+						<td>9.35%</td>
+					</tr>
+					<tr>
+						<td>CNN</td>
+						<td>0.3</td>
+						<td>0.9451</td>
+						<td>6.0790</td>
+						<td>65.57%</td>
+						<td>20.25%</td>
+						<td>9.55%</td>
+					</tr>
+					<tr class="highlight">
+						<td>CNN</td>
+						<td>0.7</td>
+						<td>2.4837</td>
+						<td>2.8896</td>
+						<td>18.57%</td>
+						<td>13.03%</td>
+						<td>9.75%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>0</td>
+						<td>0.0568</td>
+						<td>7.4145</td>
+						<td>98.15%</td>
+						<td>29.29%</td>
+						<td>12.15%</td>
+					</tr>
+					<tr class="highlight">
+						<td>TCN + CNN</td>
+						<td>0.3</td>
+						<td>0.6391</td>
+						<td>5.1540</td>
+						<td>77.56%</td>
+						<td>28.23%</td>
+						<td>13.05%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>0.7</td>
+						<td>2.5471</td>
+						<td>2.8282</td>
+						<td>17.18%</td>
+						<td>12.69%</td>
+						<td>9.55%</td>
+					</tr>
+				</tbody>
+			</table>
+			<figcaption><span>Table 2:</span> Testing the CNN and TCN cluster classifiers over 250 epochs with dropout.
+			Highlighted are the models from each architecture with the best performance.</figcaption>
+		</figure>
+
 		<h3>Training the Optimised Models</h3>
-		<p>After determining the best hyperparameters for the CNN and TCN, the models were trained over a greater number of epochs with early stopping (see Figure 8) and the state that reached the highest validation accuracy saved.
+		<p>After determining the best hyperparameters for the CNN and TCN, the models were trained over a greater number of epochs with early stopping (see <a href="#figure8">Figure 8</a>) and the state that reached the highest validation accuracy saved.
 			The CNN was trained for a total of 550 epochs reaching the best validation accuracy at 506.
-			By comparison, the TCN converged far quicker due to the lower dropout rate so was trained for only 150 epochs and the weights saved after 124 (see Table 3).
-			The final test accuracies were 13.35% and 9.45% retrospectively as reflected by the confusion matrices presented in Figure 9.
+			By comparison, the TCN converged far quicker due to the lower dropout rate so was trained for only 150 epochs and the weights saved after 124 (see <a href="#table3">Table 3</a>).
+			The final test accuracies were 13.35% and 9.45% retrospectively as reflected by the confusion matrices presented in <a href="#figure9">Figure 9</a>.
 		</p>
+
+		<a name="figure8"></a>
+		<figure>
+			<p><img class="classifier-train diagram" src="Assets/Images/Training-Cluster-Classifiers.png"></p>
+			<figcaption><span>Figure 8:</span> Training and validation accuracy of the fully trained CNN and TCN cluster classifiers</figcaption>
+		</figure>
+
+		<a name="figure9"></a>
+		<figure>
+			<div class="aligned-images">
+				<p><img class="confusion-matrix diagram" src="Assets/Images/TCN-Cluster-Confusion-Matrix.png"></p>
+				<p><img class="confusion-matrix diagram" src="Assets/Images/CNN-Cluster-Confusion-Matrix.png"></p>
+			</div>
+			<figcaption><span>Figure 9:</span> Confusion matrices for CNN (left) and TCN (right)</figcaption>
+		</figure>
+
+		<br>
+
+		<a name="table3"></a>
+		<figure style="margin: 0px;">
+			<table>
+				<thead>
+	  			<tr>
+	    			<th>Architecture</th>
+	    			<th>Max Epochs</th>
+						<th>Best Epoch</th>
+	    			<th>Train Loss</th>
+						<th>Validation Loss</th>
+						<th>Train Accuracy</th>
+						<th>Validation Accuracy</th>
+						<th>Test Accuracy</th>
+	  			</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>150</td>
+						<td>124</td>
+						<td>1.5053</td>
+						<td>3.2595</td>
+						<td>50.19%</td>
+						<td>25.41%</td>
+						<td>13.35%</td>
+					</tr>
+					<tr>
+						<td>CNN</td>
+						<td>550</td>
+						<td>506</td>
+						<td>2.3957</td>
+						<td>2.8868</td>
+						<td>19.68%</td>
+						<td>17.22%</td>
+						<td>9.45%</td>
+					</tr>
+				</tbody>
+			</table>
+			<figcaption><span>Table 3:</span> Results from training the optimised cluster classifiers</figcaption>
+		</figure>
 
 		<br>
 
 		<h2>Arrhythmia Classification</h2>
 		<h3>Transfer Learning</h3>
-		<p>After training the CNN and CNN + TCN to classify the clusters, the weights were saved to file and uploaded to GitHub.
+		<p>After training the CNN and CNN + TCN to classify the clusters, the weights were saved to file and uploaded to <a href="https://github.com/TomMakesThings/Semi-Supervised-ECG-Classifier">GitHub</a>.
 			New models were then made with the same architectures and weights of the pre-trained models transferred.
 			For each the final layer was removed and replaced with a new fully connected layer with 5 outputs.
 			This is because the previous models were designed to predict 19 cluster labels, while the new models predict the 5 labels of the original data.
@@ -414,20 +560,227 @@
 		</p>
 
 		<h3>CNN Performance</h3>
-		<p>Without transfer learning, the CNN achieved a decent accuracy of 91.4% (see Figure 10 and 13).
-			However, transferring the weights of the pre-trained CNN cluster classifier was detrimental to loss and accuracy both with and without freezing the layers (refer to Table 4).
-			Perhaps this is because the pre-trained CNN classifier did not perform well at learning the clusters (Table 3) and so this did not help the new model extract useful features.
+		<p>Without transfer learning, the CNN achieved a decent accuracy of 91.4% (see <a href="#figure10">Figure 10</a> and <a href="#figure11">11</a>).
+			However, transferring the weights of the pre-trained CNN cluster classifier was detrimental to loss and accuracy both with and without freezing the layers (refer to <a href="#table4">Table 4</a>).
+			Perhaps this is because the pre-trained CNN classifier did not perform well at learning the clusters (<a href="#table3">Table 3</a>) and so this did not help the new model extract useful features.
 			Therefore, we did not attempt any further optimisation of this model.
 		</p>
 
+		<a name="figure10"></a>
+		<figure>
+			<div class="aligned-images">
+				<p><img class="confusion-matrix diagram" src="Assets/Images/TCN-Label-Confusion-Matrix.png"></p>
+				<p><img class="confusion-matrix diagram" src="Assets/Images/CNN-Label-Confusion-Matrix.png"></p>
+			</div>
+			<figcaption><span>Figure 10:</span> Confusion matrices of the frozen layer CNN (left) and the frozen layer TCN arrhythmia classifiers</figcaption>
+		</figure>
+
+		<a name="figure11"></a>
+		<figure>
+			<p><img class="classifier-train diagram" src="Assets/Images/CNN-Training-Arrhythmia.png"></p>
+			<figcaption><span>Figure 11:</span> Training the CNN arrhythmia classifier without transfer learning</figcaption>
+		</figure>
+
+		<br>
+
+		<a name="table4"></a>
+		<figure style="margin: 0px;">
+			<table>
+				<thead>
+					<tr>
+						<th>Architecture</th>
+						<th>Epochs</th>
+						<th>Freeze Layers</th>
+						<th>Dropout</th>
+						<th>Batch Size</th>
+						<th>Train Loss</th>
+						<th>Validation Loss</th>
+						<th>Train Accuracy</th>
+						<th>Validation Accuracy</th>
+						<th>Test Accuracy</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>CNN</td>
+						<td>50</td>
+						<td>True</td>
+						<td>0.7</td>
+						<td>128</td>
+						<td>0.3356</td>
+						<td>0.2525</td>
+						<td>87.01%</td>
+						<td>91.01%</td>
+						<td>88.5%</td>
+					</tr>
+					<tr>
+						<td>CNN</td>
+						<td>50</td>
+						<td>False</td>
+						<td>0.7</td>
+						<td>128</td>
+						<td>0.3935</td>
+						<td>0.2892</td>
+						<td>85.41%</td>
+						<td>89.79%</td>
+						<td>87.2%</td>
+					</tr>
+					<tr class="highlight">
+						<td>CNN</td>
+						<td>50</td>
+						<td>N/A</td>
+						<td>0.7</td>
+						<td>128</td>
+						<td>0.2199</td>
+						<td>0.1795</td>
+						<td>91.22%</td>
+						<td>93.49%</td>
+						<td>91.4%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>True</td>
+						<td>0.3</td>
+						<td>128</td>
+						<td>0.0414</td>
+						<td>0.0568</td>
+						<td>98.39%</td>
+						<td>98.47%</td>
+						<td>96.3%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>False</td>
+						<td>0.3</td>
+						<td>128</td>
+						<td>0.0472</td>
+						<td>0.0514</td>
+						<td>98.42%</td>
+						<td>98.52%</td>
+						<td>95.95%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>N/A</td>
+						<td>0.3</td>
+						<td>128</td>
+						<td>0.0436</td>
+						<td>0.0604</td>
+						<td>98.48%</td>
+						<td>98.15%</td>
+						<td>96.3%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>True</td>
+						<td>0.3</td>
+						<td>8</td>
+						<td>0.2875</td>
+						<td>0.1612</td>
+						<td>90.24%</td>
+						<td>94.48%</td>
+						<td>94.15%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>True</td>
+						<td>0.3</td>
+						<td>32</td>
+						<td>0.0632</td>
+						<td>0.0598</td>
+						<td>97.8%</td>
+						<td>98.47%</td>
+						<td>96.85%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>True</td>
+						<td>0.3</td>
+						<td>256</td>
+						<td>0.0660</td>
+						<td>0.0829</td>
+						<td>97.84%</td>
+						<td>97.67%</td>
+						<td>95.5%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>50</td>
+						<td>N/A</td>
+						<td>0.3</td>
+						<td>32</td>
+						<td>0.626</td>
+						<td>0.0654</td>
+						<td>97.84%</td>
+						<td>97.92%</td>
+						<td>96.7%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>200</td>
+						<td>True</td>
+						<td>0.3</td>
+						<td>32</td>
+						<td>0.0165</td>
+						<td>0.0437</td>
+						<td>99.49%</td>
+						<td>98.78%</td>
+						<td>96.95%</td>
+					</tr>
+					<tr>
+						<td>TCN + CNN</td>
+						<td>200</td>
+						<td>N/A</td>
+						<td>0.3</td>
+						<td>128</td>
+						<td>0.0176</td>
+						<td>0.0573</td>
+						<td>99.38%</td>
+						<td>99.07%</td>
+						<td>96.95%</td>
+					</tr>
+					<tr class="highlight">
+						<td>TCN + CNN</td>
+						<td>200</td>
+						<td>N/A</td>
+						<td>0.3</td>
+						<td>32</td>
+						<td>0.0216</td>
+						<td>0.0648</td>
+						<td>99.27%</td>
+						<td>98.74%</td>
+						<td>97%</td>
+					</tr>
+			</table>
+			<figcaption><span>Table 4:</span> Results of training the CNN and TCN for arrhythmia prediction</figcaption>
+		</figure>
+
 		<h3>TCN Performance</h3>
 		<p>The TCN outperformed the CNN in each experiment.
-			When training over 50 epochs with batch size 128, both the model with transferred frozen layers (Figure 11), and the model without transfer learning achieved a high accuracy of 96.3% (see Table 4).
+			When training over 50 epochs with batch size 128, both the model with transferred frozen layers (<a href="#figure12">Figure 12</a>), and the model without transfer learning achieved a high accuracy of 96.3% (see <a href="table4">Table 4</a>).
 			Testing different batch sizes revealed that this could be further improved, with a batch size of 32 performing best for both over 50 epochs.
 			Then the models were trained over 200 epochs using this batch size.
 			The highest test accuracy was impressive at 97% from the TCN without transferred weights.
-			However, the performance of the frozen TCN was very similar at 96.95% (see Figure 10) and this model did in fact achieve a significantly lower training and validation loss.
+			However, the performance of the frozen TCN was very similar at 96.95% (see <a href="#figure10">Figure 10</a>) and this model did in fact achieve a significantly lower training and validation loss.
 		</p>
+
+		<a name="figure12"></a>
+		<figure>
+			<p><img class="classifier-train diagram" src="Assets/Images/TCN-Training-Arrhythmia-Transfer.png"></p>
+			<figcaption><span>Figure 12:</span> Training the TCN arrhythmia classifier with transfer learning</figcaption>
+		</figure>
+
+		<a name="figure13"></a>
+		<figure>
+			<p><img class="classifier-train diagram" src="Assets/Images/TCN-Training-Arrhythmia.png"></p>
+			<figcaption><span>Figure 13:</span> Training the TCN arrhythmia classifier without transfer learning </figcaption>
+		</figure>
 
 		<br>
 
@@ -464,7 +817,8 @@
 		<br>
 
 		<h2>Code, Data and Models</h2>
-		<p>The Python notebooks, dataset of ECGs with cluster assignments and trained model weights made in this project are hosted on GitHub.
+		<p>The ECG time-series data is avaliable from <a href="https://www.kaggle.com/shayanfazeli/heartbeat">Kaggle</a>,
+			while the Python notebooks, dataset of ECGs with cluster assignments and trained model weights made in this project are freely avaliable and to download from <a href="https://github.com/TomMakesThings/Semi-Supervised-ECG-Classifier">our GitHub repository</a>.
 		</p>
 
 		<br>
@@ -506,11 +860,774 @@
 			<li>[16] Palacio-Niño, J.O. and Berzal, F., 2019. Evaluation metrics for unsupervised learning algorithms. arXiv preprint arXiv:1905.05667.</li>
 			<li>[17] Philippe Remy, keras-tcn. GitHub. Available at: https://github.com/philipperemy/keras-tcn  [Accessed April  23, 2021].</li>
 			<li>[18] Isaac Godfried, 2019. Attention for time series forecasting and classification. Available at: https://towardsdatascience.com/attention-for-time-series-classification-and-forecasting-261723e0006d</li>
-			<li>[19] P. Sarkar and A. Etemad, 2020. Self-supervised ECG Representation Learning for Emotion Recognition. Available at: https://arxiv.org/pdf/2002.03898.pdf
+			<li>[19] P. Sarkar and A. Etemad, 2020. Self-supervised ECG Representation Learning for Emotion Recognition. Available at: https://arxiv.org/pdf/2002.03898.pdf</li>
 		<ul>
+
+		<br>
 
 	</div>
 
+	<div>
+		<h1>Appendix</h1>
+		<h2>Clustering</h2>
+		<h3>K-Means Clustering</h3>
+		<p>For k-means, different numbers of clusters were tested to find the optimal number.
+			As PCA led to different silhouette coefficients each time, each configuration with principal components was run 20 times and the average silhouette coefficient and standard deviation values recorded in <a href="#table5">Table 5</a>.
+			The parameters selected to produce the labels for the cluster classifiers are highlighted yellow.
+
+	<a name="figure14"></a>
+	<figure>
+		<div class="aligned-images">
+			<p><img class="cluster-size diagram" src="Assets/Images/K-Means-Cluster-Size.png"></p>
+			<p><img class="cluster-size diagram" src="Assets/Images/K-Means-Cluster-Size.png"></p>
+		</div>
+		<figcaption><span>Figure 14:</span> Number of samples in k-means clusters without applying PCA (left) and after applying PCA with 25 principal components (right)</figcaption>
+	</figure>
+
+	<a name="figure15"></a>
+	<figure>
+		<p><img class="cluster-tsne diagram" src="Assets/Images/K-Means-t-SNE.png"></p>
+		<figcaption><span>Figure 15:</span> t-SNE plot visualising the k-means selected clusters to show how similar clusters are to one another</figcaption>
+	</figure>
+
+	<a name="figure16"></a>
+	<figure>
+		<p><img class="cluster-tsne diagram" src="Assets/Images/K-Means-PCA.png"></p>
+		<figcaption><span>Figure 16:</span> : First two principal components of selected clusters.
+			Like the t-SNE plot, this shows which clusters are most alike, as well as the size of each cluster.</figcaption>
+	</figure>
+
+	<br>
+
+	<a name="table5"></a>
+	<figure style="margin: 0px;">
+		<table>
+			<thead>
+				<tr>
+					<th>Number of Clusters</th>
+					<th>Principal Components</th>
+					<th>Silhouette Coefficient</th>
+					<th>Standard Deviation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>10</td>
+					<td>N/A</td>
+					<td>0.1537</td>
+					<td>475.48</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>N/A</td>
+					<td>0.1533</td>
+					<td>470.39</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>N/A</td>
+					<td>0.1609</td>
+					<td>489.05</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>N/A</td>
+					<td>0.1693</td>
+					<td>453.25</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>N/A</td>
+					<td>0.1684</td>
+					<td>459.58</td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>N/A</td>
+					<td>0.1675</td>
+					<td>433.51</td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td>N/A</td>
+					<td>0.1746</td>
+					<td>400.89</td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>N/A</td>
+					<td>0.1804</td>
+					<td>335.57</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>N/A</td>
+					<td>0.1796</td>
+					<td>320.82</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>N/A</td>
+					<td>0.1825</td>
+					<td>279.0</td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>N/A</td>
+					<td>0.1745</td>
+					<td>246.72</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>50</td>
+					<td>0.1794</td>
+					<td>305.14</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>30</td>
+					<td>0.1972</td>
+					<td>290.04</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>25</td>
+					<td>0.1943</td>
+					<td>206.37</td>
+				</tr>
+				<tr class="highlight">
+					<td>19</td>
+					<td>15</td>
+					<td>0.2472B</td>
+					<td>335.03</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>5</td>
+					<td>0.3185</td>
+					<td>406.04</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>2</td>
+					<td>0.3729</td>
+					<td>433.12</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>1</td>
+					<td>0.5162</td>
+					<td>378.23</td>
+				</tr>
+			</tbody>
+		</table>
+		<figcaption><span>Table 5:</span> K-means parameter optimization</figcaption>
+	</figure>
+
+	<br>
+
+	<h3>Agglomerative Hierarchical Clustering</h3>
+	<p>Like k-means, different numbers of clustered were tested and the results documented in <a href="#table6">Table 6</a>.
+		This algorithm was not selected to create the labels for the cluster classifier.</p>
+
+	<a name="figure17"></a>
+	<figure>
+		<div class="aligned-images">
+			<p><img class="cluster-size diagram" src="Assets/Images/Hierarchical-Cluster-Size.png"></p>
+			<p><img class="cluster-size diagram" src="Assets/Images/Hierarchical-Cluster-Size.png"></p>
+		</div>
+		<figcaption><span>Figure 17:</span> Number of samples in agglomerative clusters without applying PCA (left) and after applying PCA with 20 principal components (right)</figcaption>
+	</figure>
+
+	<a name="figure18"></a>
+	<figure>
+		<p><img class="cluster-tsne diagram" src="Assets/Images/Hierarchical-t-SNE.png"></p>
+		<figcaption><span>Figure 18:</span> t-SNE plot visualising the agglomerative hierarchical clustering selected clusters to show how similar clusters are to one another</figcaption>
+	</figure>
+
+	<br>
+
+	<a name="table6"></a>
+	<figure style="margin: 0px;">
+		<table>
+			<thead>
+				<tr>
+					<th>Number of Clusters</th>
+					<th>Principal Components</th>
+					<th>Silhouette Coefficient</th>
+					<th>Standard Deviation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>10</td>
+					<td>N/A</td>
+					<td>0.1609</td>
+					<td>738.09</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>N/A</td>
+					<td>0.1554</td>
+					<td>627.64</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>N/A</td>
+					<td>0.1630</td>
+					<td>657.01</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>N/A</td>
+					<td>0.1616</td>
+					<td>654.47</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>N/A</td>
+					<td>0.1641</td>
+					<td>556.93</td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>N/A</td>
+					<td>0.1603</td>
+					<td>477.62</td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td>N/A</td>
+					<td>0.1661</td>
+					<td>359.58</td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>N/A</td>
+					<td>0.1661</td>
+					<td>335.50</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>N/A</td>
+					<td>0.1676</td>
+					<td>352.99</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>N/A</td>
+					<td>0.1693</td>
+					<td>370.99</td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>N/A</td>
+					<td>0.1640</td>
+					<td>342.27</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>50</td>
+					<td>0.1804</td>
+					<td>351.66</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>20</td>
+					<td>0.2116</td>
+					<td>352.02</td>
+				</tr>
+				<tr>
+					<td>19</td>
+					<td>5</td>
+					<td>0.2727</td>
+					<td>365.59</td>
+				</tr>
+			</tbody>
+		</table>
+		<figcaption><span>Table 6:</span> Agglomerative clustering parameter optimization</figcaption>
+	</figure>
+
+	<h3>DBSCAN Clustering</h3>
+	<p>For DBSCAN, parameters epsilon and minimum point were tested, and the results documented in <a href="#table7">Table 7</a>.</p>
+
+	<a name="figure19"></a>
+	<figure>
+		<p><img class="cluster-tsne diagram" src="Assets/Images/DBSCAN-PCA.png"></p>
+		<figcaption><span>Figure 19:</span> First two principal components of DBSCAN clusters.
+			This shows how many ECGs are not being clustered (-1), and how a lot of the clusters contain very few samples.</figcaption>
+	</figure>
+
+	<br>
+
+	<a name="table7"></a>
+	<figure style="margin: 0px;">
+		<table>
+			<thead>
+				<tr>
+					<th>Epsilon</th>
+					<th>Minimum Points</th>
+					<th>Principal Components</th>
+					<th>Silhouette Coefficient</th>
+					<th>Number of Clusters</th>
+					<th>Number Unclustered</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>0.5 (default)</td>
+					<td>5 (default)</td>
+					<td>70</td>
+					<td>-0.26928</td>
+					<td>168</td>
+					<td>7175</td>
+				</tr>
+				<tr>
+					<td>0.3</td>
+					<td>5</td>
+					<td>N/A</td>
+					<td>-0.41287</td>
+					<td>78</td>
+					<td>9798</td>
+				</tr>
+				<tr>
+					<td>0.3</td>
+					<td>16</td>
+					<td>N/A</td>
+					<td>-0.11727</td>
+					<td>33</td>
+					<td>4560</td>
+				</tr>
+				<tr>
+					<td>0.7</td>
+					<td>5</td>
+					<td>70</td>
+					<td>-0.12748</td>
+					<td>129</td>
+					<td>3611</td>
+				</tr>
+				<tr>
+					<td>0.</td>
+					<td>5</td>
+					<td>70</td>
+					<td>B</td>
+					<td>B</td>
+					<td>B</td>
+				</tr>
+				<tr>
+					<td>0.7</td>
+					<td>8</td>
+					<td>70</td>
+					<td>-0.08927</td>
+					<td>75</td>
+					<td>4511</td>
+				</tr>
+				<tr>
+					<td>0.7</td>
+					<td>16</td>
+					<td>70</td>
+					<td>-0.08875</td>
+					<td>32</td>
+					<td>6001</td>
+				</tr>
+				<tr>
+					<td>0.9</td>
+					<td>5</td>
+					<td>70</td>
+					<td>-0.23484</td>
+					<td>85</td>
+					<td>2162</td>
+				</tr>
+				<tr>
+					<td>0.9</td>
+					<td>8</td>
+					<td>70</td>
+					<td>-0.21898</td>
+					<td>44</td>
+					<td>2761</td>
+				</tr>
+				<tr>
+					<td>0.9</td>
+					<td>16</td>
+					<td>70</td>
+					<td>-0.1172</td>
+					<td>33</td>
+					<td>4560</td>
+				</tr>
+			</tbody>
+		</table>
+		<figcaption><span>Table 7:</span> DBSCAN parameter optimization</figcaption>
+	</figure>
+
+	<br>
+
+	<h2>Classifiers</h2>
+	<h3>Bidirectional LSTM Cluster Classifier</h3>
+	<p>Variations of the bidirectional LSTM were trained both with and without the TCN layer and self-attention to predict the cluster labels of each ECG and the results documented in <a href="#table8">Table 8</a>.</p>
+
+	<a name="table8"></a>
+	<figure style="margin: 0px;">
+		<table>
+			<thead>
+				<tr>
+					<th>Architecture</th>
+					<th>Learning Rate</th>
+					<th>AMSGrad</th>
+					<th>Batch Normalisation</th>
+					<th>Train Loss</th>
+					<th>Validation Loss</th>
+					<th>Train Accuracy</th>
+					<th>Validation Accuracy</th>
+					<th>Test Accuracy</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>BiLSTM</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.3956</td>
+					<td>2.8946</td>
+					<td>23.96%</td>
+					<td>15.28%</td>
+					<td>8.35%</td>
+				</tr>
+				<tr>
+					<td>BiLSTM</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>True</td>
+					<td>2.7506</td>
+					<td>2.9333</td>
+					<td>13.68%</td>
+					<td>10.2%</td>
+					<td>7.85%</td>
+				</tr>
+				<tr>
+					<td>BiLSTM</td>
+					<td>0.01</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.9066</td>
+					<td>3.0084</td>
+					<td>6.86%</td>
+					<td>0.82%</td>
+					<td>8.1%</td>
+				</tr>
+				<tr>
+					<td>BiLSTM</td>
+					<td>0.001</td>
+					<td>True</td>
+					<td>False</td>
+					<td>2.4135</td>
+					<td>2.8414</td>
+					<td>23.24%</td>
+					<td>16.39%</td>
+					<td>8.6%</td>
+				</tr>
+				<tr>
+					<td>TCN + BiLSTM</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.5949</td>
+					<td>2.8950</td>
+					<td>18.55%</td>
+					<td>12.98%</td>
+					<td>7.75%</td>
+				</tr>
+				<tr>
+					<td>BiLSTM + self-attention</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.9072</td>
+					<td>3.0014</td>
+					<td>6.8%</td>
+					<td>1.5%</td>
+					<td>8.55%</td>
+				</tr>
+			</tbody>
+		</table>
+		<figcaption><span>Table 8:</span> Bidirectional LSTM cluster classifier training and testing results</figcaption>
+	</figure>
+
+	<h3>CNN Cluster Classifier</h3>
+	<p>Variations of the CNN were trained both with and without the TCN layer and self-attention to predict the cluster labels of each ECG and the results documented in <a href="#table9">Table 9</a>.</p>
+
+	<a name="table9"></a>
+	<figure style="margin: 0px;">
+		<table>
+			<thead>
+				<tr>
+					<th>Architecture</th>
+					<th>Learning Rate</th>
+					<th>AMSGrad</th>
+					<th>Batch Normalisation</th>
+					<th>Train Loss</th>
+					<th>Validation Loss</th>
+					<th>Train Accuracy</th>
+					<th>Validation Accuracy</th>
+					<th>Test Accuracy</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>CNN</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.6842</td>
+					<td>2.9459</td>
+					<td>13.74%</td>
+					<td>8.01%</td>
+					<td>6.7%</td>
+				</tr>
+				<tr>
+					<td>CNN</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>True</td>
+					<td>0.8245</td>
+					<td>4.2888</td>
+					<td>74.78%</td>
+					<td>23.92%</td>
+					<td>9.95%</td>
+				</tr>
+				<tr>
+					<td>CNN</td>
+					<td>0.01</td>
+					<td>False</td>
+					<td>True</td>
+					<td>0.8000</td>
+					<td>5.5327</td>
+					<td>74.75%</td>
+					<td>24.77%</td>
+					<td>11.1%</td>
+				</tr>
+				<tr>
+					<td>CNN</td>
+					<td>0.001</td>
+					<td>True</td>
+					<td>True</td>
+					<td>0.7387</td>
+					<td>4.2511</td>
+					<td>77.35%</td>
+					<td>23.74%</td>
+					<td>10.05%</td>
+				</tr>
+				<tr>
+					<td>TCN + CNN</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.9057</td>
+					<td>3.0054</td>
+					<td>7.13%</td>
+					<td>0.82%</td>
+					<td>8.05%</td>
+				</tr>
+				<tr>
+					<td>TCN + CNN</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>True</td>
+					<td>1.0128</td>
+					<td>3.2032</td>
+					<td>68.32%</td>
+					<td>29.9%</td>
+					<td>12.85%</td>
+				</tr>
+				<tr>
+					<td>TCN + CNN</td>
+					<td>0.01</td>
+					<td>False</td>
+					<td>True</td>
+					<td>1.5354</td>
+					<td>3.2391</td>
+					<td>51.2%</td>
+					<td>25.03%</td>
+					<td>11.55%</td>
+				</tr>
+				<tr>
+					<td>TCN + CNN</td>
+					<td>0.001</td>
+					<td>True</td>
+					<td>True</td>
+					<td>1.0634</td>
+					<td>3.2680</td>
+					<td>66.91%</td>
+					<td>28.21%</td>
+					<td>12.85%</td>
+				</tr>
+				<tr>
+					<td>CNN + self-attention</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.8974</td>
+					<td>2.9724</td>
+					<td>7.4%</td>
+					<td>5.82%</td>
+					<td>8.5%</td>
+				</tr>
+				<tr>
+					<td>CNN + self-attention</td>
+					<td>0.001</td>
+					<td>False</td>
+					<td>True</td>
+					<td>2.4908</td>
+					<td>3.1187</td>
+					<td>23.39%</td>
+					<td>11.66%</td>
+					<td>6.95%</td>
+				</tr>
+				<tr>
+					<td>CNN + self-attention</td>
+					<td>0.01</td>
+					<td>False</td>
+					<td>False</td>
+					<td>2.9067</td>
+					<td>3.0094</td>
+					<td>6.81%</td>
+					<td>0.82%</td>
+					<td>8.1%</td>
+				</tr>
+				<tr>
+					<td>CNN + self-attention</td>
+					<td>0.001</td>
+					<td>True</td>
+					<td>False</td>
+					<td>2.9026</td>
+					<td>2.9693</td>
+					<td>7.13%</td>
+					<td>3.3%</td>
+					<td>7.55%</td>
+				</tr>
+			</tbody>
+		</table>
+		<figcaption><span>Table 9:</span> CNN cluster classifier training and testing results</figcaption>
+	</figure>
+
+	<br>
+
+	<h3>F-Fold Cross Validation</h3>
+	<p>Before training the final cluster classifiers in <a href="#table2">Table 2</a>, 5-fold cross validation was run over 15 epochs to find the best train-validation splits for the CNN and TCN-CNN models.
+		For both (<a href="#table10">Table 10</a> and <a href="#table11">11</a>), fold 3 performed best achieving 2.9282 and 2.9281 loss retrospectively.</p>
+
+		<a name="table10"></a>
+		<figure style="margin: 0px;">
+			<table>
+				<thead>
+					<tr>
+						<th>Fold</th>
+						<th>Train Loss</th>
+						<th>Validation Loss</th>
+						<th>Train Accuracy</th>
+						<th>Validation Accuracy</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2.9220</td>
+						<td>2.9285</td>
+						<td>6.44%</td>
+						<td>4.66%</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>2.9233</td>
+						<td>2.9347</td>
+						<td>6.48%</td>
+						<td>4.66%</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>2.9220</td>
+						<td>2.9282</td>
+						<td>6.48%</td>
+						<td>4.69%</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>2.9128</td>
+						<td>2.9768</td>
+						<td>6.63%</td>
+						<td>1.12%</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>2.9109</td>
+						<td>2.9870</td>
+						<td>6.75%</td>
+						<td>0.76%</td>
+					</tr>
+				</tbody>
+			</table>
+			<figcaption><span>Table 10:</span> Results of 5-fold cross validation for the optimised CNN cluster classifier</figcaption>
+		</figure>
+
+		<br>
+
+		<a name="table11"></a>
+		<figure style="margin: 0px;">
+			<table>
+				<thead>
+					<tr>
+						<th>Fold</th>
+						<th>Train Loss</th>
+						<th>Validation Loss</th>
+						<th>Train Accuracy</th>
+						<th>Validation Accuracy</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2.9220</td>
+						<td>2.9285</td>
+						<td>6.44%</td>
+						<td>4.66%</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>2.9233</td>
+						<td>2.9347</td>
+						<td>6.48%</td>
+						<td>4.66%</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>2.9220</td>
+						<td>2.9282</td>
+						<td>6.48%</td>
+						<td>4.69%</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>2.9128</td>
+						<td>2.9768</td>
+						<td>6.63%</td>
+						<td>1.12%</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>2.9109</td>
+						<td>2.9870</td>
+						<td>6.75%</td>
+						<td>0.76%</td>
+					</tr>
+				</tbody>
+			</table>
+			<figcaption><span>Table 11:</span> Results of 5-fold cross validation for the optimised TCN cluster classifier</figcaption>
+		</figure>
+
+	</div>
+
+	<br>
+	<br>
 	<br>
 
 </div>

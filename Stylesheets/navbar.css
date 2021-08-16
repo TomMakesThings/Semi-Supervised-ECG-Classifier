@@ -66,7 +66,7 @@
 }
 
 #header-top {
-  background: rgba(0, 0, 0, 0.5)
+  background: rgba(0, 0, 0, 0.75);
 }
 
 #header-center {
@@ -94,6 +94,10 @@
   position: absolute;
   transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
+}
+
+.ecg:hover {
+  animation: IncreaseSizeSmall 1.1s linear infinite;
 }
 
 .ecg-left {

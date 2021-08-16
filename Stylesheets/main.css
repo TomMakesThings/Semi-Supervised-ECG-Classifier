@@ -1,11 +1,12 @@
 :root {
+  --lilac: #b17dff;
   --purple: #6100FE;
   --darkpurple: #3500A0;
   --brightpurple: #6600FF;
   --midgrey: #BFBFBF;
   --lightgrey: #F2F2F2;
   --limegreen: #7ffc03;
-  --green: #6ad40d;
+  --green: #60bf11;
 }
 
 /** Custom fonts **/
@@ -61,7 +62,7 @@ h1, h2, h3, p {
 
 span {
   font-weight: bold;
-  color: var(--brightpurple);
+  color: var(--green);
 }
 
 figure {
@@ -73,6 +74,10 @@ figcaption {
   font-size: 12px;
 }
 
+table {
+  width: 100%;
+}
+
 table, th, td {
   border: 1px solid grey;
   border-collapse: collapse;
@@ -81,7 +86,7 @@ table, th, td {
 th, td {
   padding: 5px;
   text-align: left;
-  font-size: 14px;
+  font-size: max(10px, min(14px, 2vw));
 }
 
 th {

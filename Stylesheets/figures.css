@@ -3,40 +3,40 @@
   width: 100%;
 }
 
+.raw-label-pie, .confusion-matrix {
+  max-width: 250px;
+}
+
 .ecg-diagram {
   max-width: 270px;
+}
+
+.original-ecg, .gaussian-ecg {
+  max-width: 350px;
 }
 
 .tcn-diagram {
   max-width: 400px;
 }
 
-.raw-label-pie {
-  max-width: 230px;
-}
-
-.raw-label-matrix {
-  max-width: 230px;
-}
-
-.original-ecg {
-  max-width: 350px;
-}
-
-.gaussian-ecg {
-  max-width: 350px;
-}
-
-.clustered-ecgs {
-  max-width: 950px;
+.cluster-size {
+  max-width: 450px;
 }
 
 .cluster-labels {
   max-width: 550px;
 }
 
-.arrhythmia-labels {
+.cluster-tsne {
+  max-width: 600px;
+}
+
+.arrhythmia-labels, .classifier-train {
   max-width: 700px;
+}
+
+.clustered-ecgs {
+  max-width: 950px;
 }
 
 .aligned-images {
@@ -44,4 +44,8 @@
   justify-content: center;
   align-items: center;
   margin: auto 0;
+}
+
+.highlight {
+  background-color: var(--lilac);
 }
