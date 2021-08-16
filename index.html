@@ -359,7 +359,7 @@
 		<h3>Conclusion</h3>
 		<p>We concluded that k-means with 15 principal components was to be chosen to assign the new labels as it is a good compromise between silhouette coefficient and standard deviation.
 			<a href="#figure5">Figure 5</a> demonstrates that most clusters are well defined with an identifiable shapes, while PCA and t-SNE graphs show cluster size and how similar clusters are to one another.
-			These additional figures and tables of results are in the Appendix.
+			These additional figures and tables of results are in the <a href="#appendix">Appendix</a>.
 		</p>
 
 		<a name="figure5"></a>
@@ -412,7 +412,7 @@
 				<thead>
 	  			<tr>
 	    			<th>Architecture</th>
-	    			<th>Dropout</th>
+	    			<th>Dropout *</th>
 	    			<th>Train Loss</th>
 						<th>Validation Loss</th>
 						<th>Train Accuracy</th>
@@ -478,7 +478,8 @@
 				</tbody>
 			</table>
 			<figcaption><span>Table 2:</span> Testing the CNN and TCN cluster classifiers over 250 epochs with dropout.
-			Highlighted are the models from each architecture with the best performance.</figcaption>
+			Highlighted are the models from each architecture with the best performance.
+			* Dropout values are between 0-1, where 0 is no dropout and 1 is 100% dropout.</figcaption>
 		</figure>
 
 		<h3>Training the Optimised Models</h3>
@@ -556,7 +557,7 @@
 			This is because the previous models were designed to predict 19 cluster labels, while the new models predict the 5 labels of the original data.
 			The new models were then trained over 50 epochs both with and without freezing the weights of all layers, except the output layer, and compared against the same architecture without weight transfer.
 			Then the best model optimised further through testing different batch sizes and trained over 200 epochs.
-			Additional tables are in the Appendix.
+			Additional tables are in the <a href="#appendix">Appendix</a>.
 		</p>
 
 		<h3>CNN Performance</h3>
@@ -591,7 +592,7 @@
 						<th>Architecture</th>
 						<th>Epochs</th>
 						<th>Freeze Layers</th>
-						<th>Dropout</th>
+						<th>Dropout *</th>
 						<th>Batch Size</th>
 						<th>Train Loss</th>
 						<th>Validation Loss</th>
@@ -758,7 +759,8 @@
 						<td>97%</td>
 					</tr>
 			</table>
-			<figcaption><span>Table 4:</span> Results of training the CNN and TCN for arrhythmia prediction</figcaption>
+			<figcaption><span>Table 4:</span> Results of training the CNN and TCN for arrhythmia prediction.
+			* Dropout values are between 0-1, where 0 is no dropout and 1 is 100% dropout.</figcaption>
 		</figure>
 
 		<h3>TCN Performance</h3>
@@ -833,10 +835,12 @@
 
 		<h1>Contributions</h1>
 		<p>As each group member had different skills and interests, work was divided as follows:</p>
-		<p><span>Tom:</span> Team leader, notebook development, poster design, background research and results write up, proposed network diagram</p>
-		<p><span>Lavinia:</span> Time series augmentation research, clustering and network optimisation, recording classifier results and graphs</p>
-		<p><span>Dave:</span> Clustering research, initial data augmentation experimentation, clustering parameter optimisation, semi-supervised classification experimentation</p>
-		<p><span>Will:</span> Network architecture research, DBSCAN optimisation, LSTM experimentation</p>
+		<ul>
+			<li><span>Tom:</span> Team leader, notebook development, website creator, background research and results write up, proposed network diagram</li>
+			<li><span>Lavinia:</span> Time series augmentation research, clustering and network optimisation, recording classifier results and graphs</li>
+			<li><span>Dave:</span> Clustering research, initial data augmentation experimentation, clustering parameter optimisation, semi-supervised classification experimentation</li>
+			<li><span>Will:</span> Network architecture research, DBSCAN optimisation, LSTM experimentation</li>
+		</ul>
 
 		<br>
 
@@ -868,6 +872,7 @@
 	</div>
 
 	<div>
+		<a name="appendix"></a>
 		<h1>Appendix</h1>
 		<h2>Clustering</h2>
 		<h3>K-Means Clustering</h3>
@@ -907,7 +912,7 @@
 					<th>Number of Clusters</th>
 					<th>Principal Components</th>
 					<th>Silhouette Coefficient</th>
-					<th>Standard Deviation</th>
+					<th>Standard Deviation (σ)</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -1055,7 +1060,7 @@
 					<th>Number of Clusters</th>
 					<th>Principal Components</th>
 					<th>Silhouette Coefficient</th>
-					<th>Standard Deviation</th>
+					<th>Standard Deviation (σ)</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -1165,7 +1170,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Epsilon</th>
+					<th>Epsilon (ε)</th>
 					<th>Minimum Points</th>
 					<th>Principal Components</th>
 					<th>Silhouette Coefficient</th>
@@ -1271,7 +1276,7 @@
 			<thead>
 				<tr>
 					<th>Architecture</th>
-					<th>Learning Rate</th>
+					<th>Learning Rate (θ)</th>
 					<th>AMSGrad</th>
 					<th>Batch Normalisation</th>
 					<th>Train Loss</th>
@@ -1362,7 +1367,7 @@
 			<thead>
 				<tr>
 					<th>Architecture</th>
-					<th>Learning Rate</th>
+					<th>Learning Rate (θ)</th>
 					<th>AMSGrad</th>
 					<th>Batch Normalisation</th>
 					<th>Train Loss</th>
