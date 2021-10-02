@@ -14,7 +14,7 @@
 <h1>ʀᴇsᴜʟᴛs</h1>
 <p>Our best model achieved a high test accuracy of 97% by combining a Convolutional Neural Network (CNN) layer with a Temporal Convolutional Network (TCN) as depicted in the diagram below. While unfortuantely our clustering transfer learning approach did not lead to a significant improvement in accuracy, our work goes to show that TCNs, a relatively new and underrepresented architecture for time-series data, results in superior performance compared to the current standard of CNN and LSTM architectures for ECG classification.</p>
 
-<p><img src="https://github.com/TomMakesThings/Semi-Supervised-ECG-Classifier/blob/gh-pages/Assets/Images/TCN-Diagram.png" width=400></p>
+<p><img src="https://github.com/TomMakesThings/Semi-Supervised-ECG-Classifier/blob/gh-pages/Assets/Images/Classifier-Explained.gif"></p>
 
 <h1>ʀᴜɴɴɪɴɢ ᴛʜᴇ ᴄᴏᴅᴇ</h1>
 <h2>🇩‌🇦‌🇹‌🇦‌🇸‌🇪‌🇹‌</h2>
